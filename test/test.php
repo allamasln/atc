@@ -7,7 +7,13 @@
 </head>
 <body>
 	<?php
-		echo "Hola Tino";
+
+	function greet($person) {
+		echo "Hello " . $person;
+	}
+
 	?>
+	<h2><?php greet("Tino"); ?></h2>
+	<h2><?php greet("Antonio"); ?></h2>
 </body>
 </html>
