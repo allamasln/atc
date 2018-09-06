@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/global.css">
-	<title>test</title>
+	<title>Hello World Testing</title>
 </head>
 <body>
 	<?php
