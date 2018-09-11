@@ -1,0 +1,13 @@
+#total {
+	color: red;
+}
+.on {
+	display: block;
+}
+.off {
+	display: none;
+}
+
+.error {
+	border: 1px solid  red;
+}
