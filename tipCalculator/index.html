@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>Tip calculator</title>	
+</head>
+<body>
+	
+	<h1>Tip calculator</h1>
+	
+	<form id="fTipCalculator" onsubmit="return calculateTip();" >
+
+		<ol>
+			<li>
+				<label for="bill">How much was the bill?</label>
+				<input  id="bill" type="text" name="bill" placeholder="Bill amount"> €
+			</li>
+
+			<li>
+				<label for="service">How was the service</label>
+				<select id="service">
+					<option disabled selected value="0">Choose an option</option>
+					<option value="0.3">Great (30%)</option>
+					<option value="0.2">Good (20%)</option>
+					<option value="0.15">OK (15%)</option>
+					<option value="0.10">Bad (10%)</option>
+					<option value="0.05">Horrible (5%)</option>
+				</select>
+			</li>
+			
+			<li>
+				<label for="people">How many people are sharing the bill?</label>
+				<input type="text" id="people" placeholder="Number of people"> people
+			</li>
+	
+			<li><input type="submit" id="calculate" value="Calculate"></li>
+	</form>
+	
+	<div id="total" >
+
+		<h2>TIP AMOUNT: <span id="tip">0.00</span> €<span id="each" class="off">(each)</span></h2>
+		
+		<div id="alerts"></div>
+	</div>
+	
+</body>
+</html>
+<script src="tip.js"></script>
