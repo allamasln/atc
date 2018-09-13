@@ -15,6 +15,7 @@ function calculateTip() {
 			
 			alerts.innerHTML = ""; 
 			each.classList.remove("on");
+			alerts.classList.remove("on");
 			var alert = "";
 			var error = [];
 			var total = 0;
@@ -25,7 +26,8 @@ function calculateTip() {
 			
 			
 			if (error.length === 0) {
-
+				alerts.classList.remove("on");
+				alerts.className = "off";
 				if(people === "" || people <=1){
 
 					error = [];
@@ -44,8 +46,12 @@ function calculateTip() {
 				}
 
 			} else {
+				alerts.classList.remove("off");
+				alerts.className = "on";			
 
-				alerts.innerHTML = "Please enter values";
+				alerts.innerHTML = "<a href='#' onclick='closeAlert()'>x</a>";
+				alerts.innerHTML += "Please enter values";
+
 				
 					error.forEach(field => {
 					  field.className = "error";
@@ -90,6 +96,8 @@ function calculateTip() {
 				}
 				
 			}
+
+			
 			
 			return false;
 		}

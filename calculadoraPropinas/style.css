@@ -24,3 +24,10 @@ p {
   border-radius: 5px;
   border: 2px solid #C5831D;
 }
+.error {
+  border: 2px solid red;
+}
+
+.good {
+  border: 2px solid green;
+}

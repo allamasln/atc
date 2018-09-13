@@ -4,14 +4,24 @@ function calculateTip() {
 	var bill = document.getElementById("bill").value;
 	var service = document.getElementById("service").value;
 	var people = document.getElementById("people").value;
-
+	var paragraph = document.getElementById("p");
+	var required = document.createTextNode("Required Field");
+	
 //Validate input
 	if (bill === "" || service == 0) {
 		document.getElementById("alerts").style.display = "block";
+		if (bill === "") { 
+		document.getElementById("bill").className = "error";
+		if (paragraph.innerHTML == "") { paragraph.appendChild(required); }
+		
+		}  // this adds the error class
+		if (service == 0) { document.getElementById("service").className = "error"; }
 		//Mejorar alert
 		//alert("Please enter values");
 		return;
 	}
+	document.getElementById("bill").className = "good";
+	document.getElementById("service").className = "good";
 //Check people input
 	if (people === "" || people <= 1) {
 		people = 1;
