@@ -1,6 +1,6 @@
 function calculate() {
 
-	if (validate() == true) {
+	if (valid() == true) {
 
 		//Qué hacer
 	
@@ -8,7 +8,7 @@ function calculate() {
 
 }
 
-function validate() { 
+function valid() { 
 			
 var obj_form = document.getElementById("form");
 var validable = ["INPUT", "SELECT", "TEXTAREA", "DATALIST", "OUTPUT"];
@@ -24,10 +24,14 @@ var errors = 0;
 			//Comprobar si el usuario ha rellenado el campo
 			if (obj_form.children[i].value === "" || obj_form.children[i].value == 0 || obj_form.children[i].value === 0) {
 				obj_form.children[i].className = "error";
+				if (obj_form.children[i].nextSibling != "P") {
+				obj_form.children[i].insertAdjacentHTML("afterend", "<p>* Required field</p>");
+				}
 				errors++;
 			}
 			else { 
 				obj_form.children[i].className = "good";
+
 			}
 		}
 	}
