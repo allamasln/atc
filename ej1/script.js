@@ -1,16 +1,16 @@
 var forms = document.getElementsByTagName('form');
+alert("hay " + forms.length + " formularios");
 
-var total = forms.length;
 
-for (var i = 0; i < total ; i++)
-{
+for (var form of forms) {
 
-	forms.item(i).addEventListener("submit",
-            function(event) {
-                event.preventDefault();
-                alert(this.id);
-                },
-  				false);
+	form.addEventListener("submit",
+        function(event) {
+            event.preventDefault();
+            alert(this.id);
+            },
+				false);
 }
+
 
 
