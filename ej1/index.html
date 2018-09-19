@@ -28,10 +28,53 @@
 		
 	</form>
 	<form id="2" class="validate test1 test">
-		<input type="submit" value="form2">
+		<ol>
+			<li>
+				<label for="coches">Selecciona un concesionario:</label>
+				<select name="cars">
+				  <option value="volvo">Volvo</option>
+				  <option value="saab">Saab</option>
+				  <option value="fiat">Fiat</option>
+				  <option value="audi">Audi</option>
+				</select>
+			</li>
+			<li>
+				<label for="ciudad">Busca tu ciudad:</label>
+				<input list="ciudades" name="ciudad">
+				  <datalist id="ciudades">
+				    <option value="Badajoz">
+				    <option value="Cádiz">
+				    <option value="Madrid">
+				    <option value="Sevilla">
+				    <option value="Zaragoza">
+				  </datalist>
+  				</li>
+			<li>
+				<label for="postal">Código postal:</label>
+				<input type="text" name="postal" id="postal" pattern="[0-9]{5}" title="Introduce número de 5 cifras" required>
+			</li>
+			<li>
+				<input type="submit" value="form2">
+			</li>
+		</ol>
 	</form>
-	<form id="3" class="test test1 test2">
-		<input type="submit" value="form3">
+	<form id="3" class="validate test test1 test2">
+		<ol>
+			<li>
+				<label for="preferencia">¿Qué te gustan más?</label>
+				<input type="radio" name="gender" value="rubias" checked> Rubias
+				<input type="radio" name="gender" value="morenas"> Morenas
+				<input type="radio" name="gender" value="ahi"> Ahí, ahí, ahí
+			</li>
+			<li>
+				<label for="motivo">¿Por qué?</label><br>
+				<textarea rows="4" cols="50">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+				</textarea>
+			</li>
+			<li>
+				<input type="submit" value="form3">
+			</li>
+		</ol>
 	</form>
 </body>
 </html>

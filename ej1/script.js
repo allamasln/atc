@@ -4,19 +4,28 @@ function initValidators() {
 	
 	var forms = document.getElementsByTagName('form');
 
+
+
 	for (var form of forms) {
+
 		if (form.classList.contains("validate")) {
+
 			
-			form.addEventListener("submit", formValidate, false);
+			form.addEventListener("submit", formValidate, false); //El false hace que el flujo sea "bubbling" en vez de "capture), (bubbling: desde hijos a padres)
 		}
 	}
 
 	function formValidate() {
 	    
-	    event.preventDefault();
+	    event.preventDefault(); //Evita el funcionamiento por defecto del event
 
-	    alert(this.id);
+	    alert(this.id); //Te devuelve el id del form en el que está el botón pulsado
+	    var FORM_TO_VALIDATE = document.getElementById(this.id);
 
+	    for (var input of FORM_TO_VALIDATE) {
+	    	alert(input.type);
+
+	    }
 
 	    /* 
 
