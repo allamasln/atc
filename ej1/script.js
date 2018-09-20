@@ -10,21 +10,45 @@ function initValidators() {
 
 		if (form.classList.contains("validate")) {
 
-			
 			form.addEventListener("submit", formValidate, false); //El false hace que el flujo sea "bubbling" en vez de "capture), (bubbling: desde hijos a padres)
+    		form.addEventListener("invalid", formValidateNot, true);
+
 		}
+	}
+
+	function formValidateNot() {
+		event.preventDefault();
+		console.log(event);
+		var INVALID_FIELD = event.target;
+		var INVALID_FORM = event.currentTarget;
+		var ERROR_MESSAGE_TITLE = event.target.title;
+		var ERROR_MESSAGE_VLDMSG = event.target.validationMessage;
+
+		console.log("Error " + ERROR_MESSAGE_VLDMSG + " " + ERROR_MESSAGE_TITLE);
+
+		INVALID_FIELD.classList.add("error");
+		INVALID_FIELD.insertAdjacentHTML("afterend", "<p> Completame </p>");
 	}
 
 	function formValidate() {
 	    
 	    event.preventDefault(); //Evita el funcionamiento por defecto del event
-
 	    alert(this.id); //Te devuelve el id del form en el que está el botón pulsado
 	    var FORM_TO_VALIDATE = document.getElementById(this.id);
 
 	    for (var input of FORM_TO_VALIDATE) {
 	    	alert(input.type);
 
+
+
+	    	/*switch (input.type)
+	    	{
+	    		case "text": console.log(input);
+	    		break;
+	    		case "number": console.log(input);
+	    		break;
+	    	}
+			*/
 	    }
 
 	    /* 
