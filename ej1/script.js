@@ -33,7 +33,7 @@ function initValidators() {
 
 		if (alertDiv == null) { //si no existe un div, aquí se crea //
 
-		body.insertAdjacentHTML('afterbegin', '<div id="alerts" class="alert"> </div>');
+		body.insertAdjacentHTML('afterbegin', '<div id="alerts" class="alert"></div>');
 
 		} else { alertDiv.style.display = "block"; } //si existe. lo hace block para mostrarlo
 
@@ -46,14 +46,14 @@ function initValidators() {
 		//		for (var i = 0; i < invalidFields.length; i++) {
 
 			//label = invalidForm.querySelector( "label[for=" + invalidFields[ i ].id + "]" );
-			var errorMessage = "<li>" + invalidField.name + " " + errorMessageTitle + " " + errorMessageVldmsg + "</li>";
-			
+			//var errorMessage = "<li>" + invalidField.name + " " + errorMessageTitle + " " + errorMessageVldmsg + "</li>";
+			var errorMessage = "<p>" + invalidField.name + " " + errorMessageTitle + " " + errorMessageVldmsg + "</p>";
 			
 			console.log("for");
 			console.log(errorMessage);
 
-			alertDiv.insertAdjacentHTML('afterend', errorMessage);
-
+			alertDiv.insertAdjacentHTML('afterbegin', errorMessage);
+			//alertDiv.innerHTML(errorMessage);
 			//console.log(label);
 
 		//}
