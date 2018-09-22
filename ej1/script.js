@@ -18,25 +18,57 @@ function initValidators() {
 
 	function formValidateNot() {
 		event.preventDefault();
-		console.log(event);
-		var INVALID_FIELD = event.target;
-		var INVALID_FORM = event.currentTarget;
-		var ERROR_MESSAGE_TITLE = event.target.title;
-		var ERROR_MESSAGE_VLDMSG = event.target.validationMessage;
 
-		console.log("Error " + ERROR_MESSAGE_VLDMSG + " " + ERROR_MESSAGE_TITLE);
+		var invalidField = event.target;
+		var invalidForm = event.currentTarget;
+		var errorMessageTitle = event.target.title;
+		var errorMessageVldmsg = event.target.validationMessage;
+		var alertDiv = document.getElementById("alerts");
+		var body = document.getElementsByTagName("BODY")[0];		
+		var invalidFields = invalidForm.querySelectorAll( ":invalid" )
 
-		INVALID_FIELD.classList.add("error");
-		INVALID_FIELD.insertAdjacentHTML("afterend", "<p> Completame </p>");
+		console.log(invalidField);
+		console.log(invalidFields); 
+
+
+		if (alertDiv == null) { //si no existe un div, aquí se crea //
+
+		body.insertAdjacentHTML('afterbegin', '<div id="alerts" class="alert"> </div>');
+
+		} else { alertDiv.style.display = "block"; } //si existe. lo hace block para mostrarlo
+
+		//marcar en rojo los campos con error
+
+		//invalidField.classList.add("error");
+
+		//rellenar el div con los mensajes de error
+
+		//		for (var i = 0; i < invalidFields.length; i++) {
+
+			//label = invalidForm.querySelector( "label[for=" + invalidFields[ i ].id + "]" );
+			var errorMessage = "<li>" + invalidField.name + " " + errorMessageTitle + " " + errorMessageVldmsg + "</li>";
+			
+			
+			console.log("for");
+			console.log(errorMessage);
+
+			alertDiv.insertAdjacentHTML('afterend', errorMessage);
+
+			//console.log(label);
+
+		//}
+
+		//
+		
 	}
 
 	function formValidate() {
 	    
 	    event.preventDefault(); //Evita el funcionamiento por defecto del event
 	    alert(this.id); //Te devuelve el id del form en el que está el botón pulsado
-	    var FORM_TO_VALIDATE = document.getElementById(this.id);
+	    var formToValidate = document.getElementById(this.id);
 
-	    for (var input of FORM_TO_VALIDATE) {
+	    for (var input of formToValidate) {
 	    	alert(input.type);
 
 
