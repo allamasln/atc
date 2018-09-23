@@ -8,7 +8,7 @@
 		.error {
 			border: 2px solid red;
 		}
-		.alert {
+		/*.alert {
 			z-index: 101;
 		    top: 0;
 		    left: 50%;
@@ -22,12 +22,25 @@
 		    border-radius: 5px;
 		    margin: 5px;
 
+		}*/
+
+		.alert {
+		    text-align: center;
+			padding: 10px;
+		    background-color: #f44336;
+		    color: white;
+		    display: none;
+		    border-radius: 5px;
+		    margin: 5px;
+
 		}
 	</style>
 </head>
 <body>
 	<div id="alerts" class="alert">
-	
+		<ul id="errors">
+			
+		</ul>	
 	</div>
 	<form id="1" class="validate test">
 

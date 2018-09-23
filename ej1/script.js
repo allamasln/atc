@@ -4,8 +4,6 @@ function initValidators() {
 	
 	var forms = document.getElementsByTagName('form');
 
-
-
 	for (var form of forms) {
 
 		if (form.classList.contains("validate")) {
@@ -16,6 +14,10 @@ function initValidators() {
 		}
 	}
 
+
+
+
+
 	function formValidateNot() {
 		event.preventDefault();
 
@@ -23,12 +25,23 @@ function initValidators() {
 		var invalidForm = event.currentTarget;
 		var errorMessageTitle = event.target.title;
 		var errorMessageVldmsg = event.target.validationMessage;
-		var alertDiv = document.getElementById("alerts");
 		var body = document.getElementsByTagName("BODY")[0];		
 		var invalidFields = invalidForm.querySelectorAll( ":invalid" )
-
+		var alertDiv = document.getElementById("alerts");
+		var errors = document.getElementById("errors");
 		console.log(invalidField);
 		console.log(invalidFields); 
+
+	    
+		/*if (alertDiv.style.display == "block") {
+
+		console.log("alert esta en block");
+
+		while (errors.hasChildNodes()) {   
+		errors.removeChild(errors.firstChild);
+		}
+
+		}*/
 
 
 		if (alertDiv == null) { //si no existe un div, aquí se crea //
@@ -37,34 +50,31 @@ function initValidators() {
 
 		} else { alertDiv.style.display = "block"; } //si existe. lo hace block para mostrarlo
 
+		
+
 		//marcar en rojo los campos con error
 
 		//invalidField.classList.add("error");
 
-		//rellenar el div con los mensajes de error
-
-		//		for (var i = 0; i < invalidFields.length; i++) {
-
-			//label = invalidForm.querySelector( "label[for=" + invalidFields[ i ].id + "]" );
-			//var errorMessage = "<li>" + invalidField.name + " " + errorMessageTitle + " " + errorMessageVldmsg + "</li>";
-			var errorMessage = "<p>" + invalidField.name + " " + errorMessageTitle + " " + errorMessageVldmsg + "</p>";
-			
-			console.log("for");
-			console.log(errorMessage);
-
-			alertDiv.insertAdjacentHTML('afterbegin', errorMessage);
-			//alertDiv.innerHTML(errorMessage);
-			//console.log(label);
-
-		//}
-
-		//
+		//for (var i = 0; i < invalidFields.length; i++) {
+		//	errorMessage += "<li>" + invalidFields[i].title + " " + invalidFields[i].name + "</li>";
+		//label = invalidForm.querySelector( "label[for=" + invalidFields[ i ].id + "]" );
 		
+		var errorMessage = "<li>" + invalidField.name + " " + errorMessageTitle + " " + errorMessageVldmsg + "</li>";
+		
+		//if (!errorMessage)
+
+		errors.insertAdjacentHTML('afterbegin', errorMessage);
+		//console.log(label);
+
+		invalidFields[0].focus();
+
 	}
 
 	function formValidate() {
 	    
 	    event.preventDefault(); //Evita el funcionamiento por defecto del event
+
 	    alert(this.id); //Te devuelve el id del form en el que está el botón pulsado
 	    var formToValidate = document.getElementById(this.id);
 
