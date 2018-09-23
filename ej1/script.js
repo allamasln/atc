@@ -9,66 +9,56 @@ function initValidators() {
 		if (form.classList.contains("validate")) {
 
 			form.addEventListener("submit", formValidate, false); //El false hace que el flujo sea "bubbling" en vez de "capture), (bubbling: desde hijos a padres)
-    		form.addEventListener("invalid", formValidateNot, true);
+			form.addEventListener("invalid", formValidateNot, true);
 
 		}
 	}
 
 
-
-
-
 	function formValidateNot() {
+
 		event.preventDefault();
 
 		var invalidField = event.target;
 		var invalidForm = event.currentTarget;
 		var errorMessageTitle = event.target.title;
-		var errorMessageVldmsg = event.target.validationMessage;
-		var body = document.getElementsByTagName("BODY")[0];		
+		var errorMessageVldmsg = event.target.validationMessage;	
 		var invalidFields = invalidForm.querySelectorAll( ":invalid" )
-		var alertDiv = document.getElementById("alerts");
-		var errors = document.getElementById("errors");
+
 		console.log(invalidField);
 		console.log(invalidFields); 
 
-	    
-		/*if (alertDiv.style.display == "block") {
+		var body = document.getElementsByTagName("BODY")[0];	
+		var alertDiv = document.getElementById("alerts");
+		var errors = document.getElementById("errors");
 
-		console.log("alert esta en block");
+		if (alertDiv == null) { //si no existe un div para alertas, aquí se crea //
+
+			body.insertAdjacentHTML('afterbegin', '<div id="alerts" class="alert"><ul id="errors"></ul></div>');
+
+		} 
 
 		while (errors.hasChildNodes()) {   
-		errors.removeChild(errors.firstChild);
+			errors.removeChild(errors.firstChild);
 		}
 
-		}*/
-
-
-		if (alertDiv == null) { //si no existe un div, aquí se crea //
-
-		body.insertAdjacentHTML('afterbegin', '<div id="alerts" class="alert"></div>');
-
-		} else { alertDiv.style.display = "block"; } //si existe. lo hace block para mostrarlo
-
-		
-
 		//marcar en rojo los campos con error
-
 		//invalidField.classList.add("error");
-
 		//for (var i = 0; i < invalidFields.length; i++) {
 		//	errorMessage += "<li>" + invalidFields[i].title + " " + invalidFields[i].name + "</li>";
 		//label = invalidForm.querySelector( "label[for=" + invalidFields[ i ].id + "]" );
 		
 		var errorMessage = "<li>" + invalidField.name + " " + errorMessageTitle + " " + errorMessageVldmsg + "</li>";
 		
-		//if (!errorMessage)
+		console.log(errors);
 
 		errors.insertAdjacentHTML('afterbegin', errorMessage);
 		//console.log(label);
 
 		invalidFields[0].focus();
 
+		alertDiv.style.display = "block"; //mostrar el alert
+		
 	}
 
 	function formValidate() {
