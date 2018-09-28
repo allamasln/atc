@@ -1,5 +1,6 @@
 import { FormValidator } from './libs/FormValidator.class';
 
+
 window.onload = initValidators;
 
  function initValidators() {
@@ -10,12 +11,12 @@ window.onload = initValidators;
 
 		if (form.classList.contains("validate")) {
 
-			let obj_form = new FormValidator(form);		
 
+
+			let obj_form = new FormValidator(form);		
+				
 		}
 	}
 	
 }
-
-		
 
