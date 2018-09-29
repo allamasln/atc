@@ -1,8 +1,7 @@
 import { AlertBox } from './AlertBox.class';
 
 export class FormValidator {
-
-
+	
 	constructor(form) {
 
 		this._box;
@@ -12,25 +11,28 @@ export class FormValidator {
 		this._form.addEventListener("invalid", this._eachInvalidFieldonSubmit.bind(this), true);
 
 		this._count_invalid = 0;	
-
 		this._errors = [];
 	}
 
 	_mark_errors(inputs) { 
+		
 		inputs.forEach((input) => input.classList.add('input-error'))
 	}
 
 	_clean_mark_errors(form) { 
 
-			for (let input of form) {
-				input.classList.remove('input-error');
-			}				
+		for (let input of form) {
+		
+			input.classList.remove('input-error');
+		}				
 	}
 
-
 	_onSubmit(event) {
+	
 		event.preventDefault();
+		
 		this._clean_mark_errors(this._form);
+		
 		this._box.cleanAlertBox();
 		this._box.current_type = "success";
 		this._box.addAlert("Validado correctamente");
@@ -40,8 +42,6 @@ export class FormValidator {
 		
 		event.preventDefault();
 
-		
-		
 		let { 
 			currentTarget: form, 
 			target: input
@@ -62,12 +62,10 @@ export class FormValidator {
 			${ err_msg_validation }
 		`
 		;
-				
-		
+						
 		let inputs_invalid = form.querySelectorAll(':invalid'); 
 
 		this._errors.push(msg_error);
-		
 		
 		if (this._count_invalid == 0) {
 			
@@ -76,10 +74,7 @@ export class FormValidator {
 			if (typeof this._box === "undefined"){
 				
 				this._box = new AlertBox('error', 300);
-			} 
-					
-			
-				
+			} 		
 		}
 
 		if(this._count_invalid == inputs_invalid.length) {
@@ -95,19 +90,8 @@ export class FormValidator {
 			this._box.show();
 			
 			this._count_invalid = 0;
-		
-
 		} else {
 			this._count_invalid++;
 		}
-		
-		
-
-
-		
-
-		
-		
-		
 	}	
 }
