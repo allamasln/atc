@@ -40,7 +40,6 @@ export class AlertBox {
 		this.box.classList.add(`box-${value}`);
 		
 		this._currentType = value;
-		
 	}
 
 	get currentType() {
