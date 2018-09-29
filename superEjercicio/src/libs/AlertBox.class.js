@@ -26,26 +26,26 @@ export class AlertBox {
 
 		this.box = document.getElementById("alertsBox");
 
-		this.current_type = type;
+		this.currentType = type;
 		
 		this.box_list = this.box.firstChild;
 
 		this.hide();
 	}
 	
-	set current_type(value) {
+	set currentType(value) {
 		
 		this._types.forEach((type) => this.box.classList.remove(`box-${type}`))
 		
 		this.box.classList.add(`box-${value}`);
 		
-		this._current_type = value;
+		this._currentType = value;
 		
 	}
 
-	get current_type() {
+	get currentType() {
 
-		return this._current_type;
+		return this._currentType;
 	}
 
 	addAlert(alert) {
