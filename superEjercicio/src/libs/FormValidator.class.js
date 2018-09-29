@@ -10,16 +10,16 @@ export class FormValidator {
 		this._form.addEventListener('submit', this._onSubmit.bind(this), true);
 		this._form.addEventListener("invalid", this._eachInvalidFieldonSubmit.bind(this), true);
 
-		this._count_invalid = 0;	
+		this._invalidCounter = 0;	
 		this._errors = [];
 	}
 
-	_mark_errors(inputs) { 
+	_markInvalidfields(inputs) { 
 		
-		inputs.forEach((input) => input.classList.add('input-error'))
+		inputs.forEach((input) => input.classList.add('input-error'));
 	}
 
-	_clean_mark_errors(form) { 
+	_unmarkInvalidField(form) { 
 
 		for (let input of form) {
 		
@@ -31,10 +31,10 @@ export class FormValidator {
 	
 		event.preventDefault();
 		
-		this._clean_mark_errors(this._form);
+		this.__unmarkInvalidField(this._form);
 		
 		this._box.cleanAlertBox();
-		this._box.current_type = "success";
+		this._box.currentType = "success";
 		this._box.addAlert("Validado correctamente");
 	}
 
@@ -44,30 +44,30 @@ export class FormValidator {
 
 		let { 
 			currentTarget: form, 
-			target: input
+			target: invalidField
 
 		} = event;
 
 		let {
-			name: name_field_invalid,
-			title: err_msg_title,
-			validationMessage: err_msg_validation
+			name: nameInvalidField,
+			title: errorTitleMessage,
+			validationMessage: errorValidationMessage
 		
-		} = input;
+		} = invalidField;
 
-		let msg_error = 
+		let errorMessage = 
 		`
-			${ name_field_invalid } 
-			${ err_msg_title } 
-			${ err_msg_validation }
+			${ nameInvalidField } 
+			${ errorTitleMessage } 
+			${ errorValidationMessage }
 		`
 		;
 						
-		let inputs_invalid = form.querySelectorAll(':invalid'); 
+		let invalidFields = form.querySelectorAll(':invalid'); 
 
-		this._errors.push(msg_error);
+		this._errors.push(errorMessage);
 		
-		if (this._count_invalid == 0) {
+		if (this._invalidCounter == 0) {
 			
 			this._errors = [];
 
@@ -77,11 +77,11 @@ export class FormValidator {
 			} 		
 		}
 
-		if(this._count_invalid == inputs_invalid.length) {
+		if(this._invalidCounter == invalidFields.length) {
 
 			
-			this._clean_mark_errors(form);
-			this._mark_errors(inputs_invalid);
+			this.__unmarkInvalidField(form);
+			this.__markInvalidfields(invalidFields);
 
 			this._box.cleanAlertBox();
 
@@ -89,9 +89,9 @@ export class FormValidator {
 			
 			this._box.show();
 			
-			this._count_invalid = 0;
+			this._invalidCounter = 0;
 		} else {
-			this._count_invalid++;
+			this._invalidCounter++;
 		}
 	}	
 }
