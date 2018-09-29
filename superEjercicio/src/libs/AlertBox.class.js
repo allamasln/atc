@@ -65,6 +65,7 @@ export class AlertBox {
   		delete this.alertList
 	}
 	show() {
+		
 		this.box.style.display = "block"; 
 	}
 
