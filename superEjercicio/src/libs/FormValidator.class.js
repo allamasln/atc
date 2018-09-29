@@ -14,16 +14,16 @@ export class FormValidator {
 		this._errors = [];
 	}
 
-	_markInvalidfields(inputs) { 
+	_markInvalidfields(fields) { 
 		
-		inputs.forEach((input) => input.classList.add('input-error'));
+		inputs.forEach((field) => input.classList.add('input-error'));
 	}
 
 	_unmarkInvalidField(form) { 
 
-		for (let input of form) {
+		for (let field of form) {
 		
-			input.classList.remove('input-error');
+			field.classList.remove('input-error');
 		}				
 	}
 
