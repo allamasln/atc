@@ -4,16 +4,16 @@ export class AlertBox {
 
 		this._types = ['base', 'error', 'warning', 'success'];
 
-		this._x_position = 'middle';
-		this._y_position = 'bottom';
+		this._xPosition = 'middle';
+		this._yPosition = 'bottom';
 		this._width = 300;
 			
 		this._body = document.body;
 	
-		this.build(String(type));
+		this._build(String(type));
 	}
 
-	build(type) {
+	_build(type) {
 		
 		if (this.box) this.destroy();
 
@@ -28,7 +28,7 @@ export class AlertBox {
 
 		this.currentType = type;
 		
-		this.box_list = this.box.firstChild;
+		this.alertList = this.box.firstChild;
 
 		this.hide();
 	}
@@ -50,16 +50,21 @@ export class AlertBox {
 
 	addAlert(alert) {
 		
-		this.box_list.insertAdjacentHTML('afterbegin', `<li class="alertsBox-list-item">${alert}</li>`);	
+		this.alertList.insertAdjacentHTML('afterbegin', `<li class="alertsBox-list-item">${alert}</li>`);	
 	}
 
 	cleanAlertBox(){
 		
-		this.box_list.innerHTML = '';	
+		this.alertList.innerHTML = '';	
 	}
 	
-	show() {
+	destroy() {
 		
+		this._body.removeChild(this.box);
+  		delete this.box;
+  		delete this.alertList
+	}
+	show() {
 		this.box.style.display = "block"; 
 	}
 
