@@ -27,15 +27,34 @@ export class FormValidator {
 		}				
 	}
 
+	_removeContent() {
+
+		while (this._box.alertList.hasChildNodes()) { //Borrar todos los campos del alertlist  
+   			this._box.alertList.removeChild(this._box.alertList.firstChild);
+		}
+
+	}
+
 	_onSubmit(event) {
 	
 		event.preventDefault();
-		
+
+		console.log(this);
+
 		this._unmarkInvalidFields(this._form);
+
+		if (this._box === undefined) {
+
+			this._box = new AlertBox('success', 300);
+			console.log("nueva box creada");
+
+		}
 		
 		this._box.cleanAlertBox();
+		
 		this._box.currentType = "success";
 		this._box.addAlert("Validado correctamente");
+		this._box.show();
 	}
 
 	_eachInvalidFieldonSubmit(event) {
@@ -59,9 +78,11 @@ export class FormValidator {
 
 		let errorMessage = 
 		`
-			${ nameInvalidField } 
-			${ errorTitleMessage } 
+			Error:
 			${ errorValidationMessage }
+			(${ nameInvalidField }) 
+			${ errorTitleMessage }.
+			
 		`
 		;
 						
@@ -72,20 +93,19 @@ export class FormValidator {
 			this._invalidCounter = invalidFields.length; 
 		}
 
-		if(this._invalidCounter == invalidFields.length) { //Comprobar campos y resetear alertbox
+		if (this._invalidCounter == invalidFields.length) { //Comprobar campos y resetear alertbox
 			
 
 			while (this._box.alertList.hasChildNodes()) { //Borrar todos los campos del alertlist  
    				this._box.alertList.removeChild(this._box.alertList.firstChild);
 			}
+			//this._removeContent();
 
 			this._invalidCounter = 1;
 			
 		} else {
 			this._invalidCounter++;
 		}
-
-		this._errors.push(errorMessage);
 
 		if (this._box === undefined) {
 
@@ -96,7 +116,9 @@ export class FormValidator {
 
 		this._box.addAlert(errorMessage);
 		this._markInvalidfields(invalidFields);
+		this._box.currentType = "error";
 		this._box.show();	
+		invalidFields[0].focus();
 
 	}	
 }
