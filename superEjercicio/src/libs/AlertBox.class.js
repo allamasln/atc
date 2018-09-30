@@ -61,7 +61,7 @@ export class AlertBox {
 		
 		this._body.removeChild(this.box);
   		delete this.box;
-  		delete this.alertList
+  		delete this.alertList;
 	}
 	show() {
 		

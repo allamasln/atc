@@ -42,7 +42,7 @@ export class FormValidator {
 		
 		event.preventDefault();
 
-		console.log("//////////////////////");
+		//Guardar todas las variables
 
 		let { 
 			currentTarget: form, 
@@ -67,54 +67,36 @@ export class FormValidator {
 						
 		let invalidFields = form.querySelectorAll(':invalid'); 
 
+		if (this._invalidCounter > invalidFields.length) { 
+
+			this._invalidCounter = invalidFields.length; 
+		}
+
+		if(this._invalidCounter == invalidFields.length) { //Comprobar campos y resetear alertbox
+			
+
+			while (this._box.alertList.hasChildNodes()) { //Borrar todos los campos del alertlist  
+   				this._box.alertList.removeChild(this._box.alertList.firstChild);
+			}
+
+			this._invalidCounter = 1;
+			
+		} else {
+			this._invalidCounter++;
+		}
+
 		this._errors.push(errorMessage);
 
 		if (this._box === undefined) {
 
-			console.log(this._box);
-			console.log("indefinido!");
 			this._box = new AlertBox('error', 300);
 			console.log("nueva box creada");
 
 		}
 
-		if (invalidFields.length > 0) { //creo que se puede quitar
+		this._box.addAlert(errorMessage);
+		this._markInvalidfields(invalidFields);
+		this._box.show();	
 
-			this._box.addAlert(errorMessage);
-			this._box.show();	
-
-		}
-
-/*		if (this._invalidCounter == 0) {
-
-			console.log(this._invalidCounter);
-
-			this._errors = [];
-
-			if (typeof this._box === undefined){
-				
-				this._box = new AlertBox('error', 300);
-				this._invalidCounter++;
-				console.log(this._invalidCounter);
-				console.log(invalidFields.length);
-
-			} 		
-		} */
-
-		if(this._invalidCounter == invalidFields.length) {
-			
-			this._unmarkInvalidFields(form);
-			this._markInvalidfields(invalidFields);
-			this._box.cleanAlertBox();
-
-			//this._errors.forEach((alert) => this._box.addAlert(alert));
-			
-			//this._box.show();
-			
-			this._invalidCounter = 0;
-		} else {
-			this._invalidCounter++;
-			console.log(this._invalidCounter);
-		}
 	}	
 }
