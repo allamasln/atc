@@ -90,7 +90,7 @@ export class FormValidator {
 		
 		} = invalidField;
 
-		let errorMessage = ` Error: ${ errorValidationMessage } (${ nameInvalidField }) ${ errorTitleMessage }.`;
+		let errorMessage = `Error: ${ errorValidationMessage } (${ nameInvalidField }) ${ errorTitleMessage }.`;
 
 		this._alerts.push(errorMessage);		
 			
