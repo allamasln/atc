@@ -11,15 +11,19 @@
 		<ol>
 			<li>
 				<label for="name">Nombre*:</label>
-				<input type="text" name="name" id="name" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required>
+				<input type="text" name="name" id="name" data-displayalerts="inline" data-type="tipo1" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required>
+			</li>
+			<li>
+				<label for="country">Nacionalidad*:</label>
+				<input type="text" name="country" data-displayalerts="inline" data-type="input_text_box_suggest" required>
 			</li>
 			<li>
 				<label for="age">Edad*:</label>
-				<input type="number" name="age" id="age" min="18" max="120" title="Introduce una edad entre 18 y 120 años" required>
+				<input type="number" name="age" id="age" data-displayalerts="alertbox" class="lol" min="18" max="120" title="Introduce una edad entre 18 y 120 años" required>
 			</li>
 			<li>
 				<label for="phone">Teléfono*:</label>
-				<input type="text" name="phone" id="phone" pattern="[0-9]{9}" title="Introduce número de 9 cifras" required>
+				<input type="text"  name="phone" id="phone" pattern="[0-9]{9}" title="Introduce número de 9 cifras" required>
 			</li>
 			<li>
 				<input type="submit" value="form1">

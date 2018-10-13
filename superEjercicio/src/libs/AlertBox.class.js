@@ -38,7 +38,7 @@ export class AlertBox {
 		this._types.forEach((type) => this.box.classList.remove(`box-${type}`))
 		
 		this.box.classList.add(`box-${value}`);
-		
+	
 		this._currentType = value;
 	}
 
@@ -47,14 +47,22 @@ export class AlertBox {
 		return this._currentType;
 	}
 
-	addAlert(alert) {
+	addAlert(alert, location = 'first') {
+
+		if(location == 'first')
+		{
+			this.alertList.insertAdjacentHTML('afterbegin', `<li class="alertsBox-list-item">${alert}</li>`);
+		} else if(location == 'last')
+		{
+			this.alertList.insertAdjacentHTML('beforeend', `<li class="alertsBox-list-item">${alert}</li>`);
+		}
 		
-		this.alertList.insertAdjacentHTML('afterbegin', `<li class="alertsBox-list-item">${alert}</li>`);	
+			
 	}
 
-	cleanAlertBox(){
+	reset() {
 		
-		this.alertList.innerHTML = '';	
+		this.alertList.innerHTML = '';
 	}
 	
 	destroy() {

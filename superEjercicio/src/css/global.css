@@ -16,6 +16,13 @@
 .box-success { background-color: green; }
 .box-warning { background-color: orange; }
 
+li > p.error {
+
+	color: red;
+	display: inline;
+
+}
+
 
 
 
